@@ -4,6 +4,7 @@ const { db } = require("./utils/database");
 
 // Models
 const { initModel } = require("./models/initModels");
+const { client, client2 } = require("./utils/whatsappConect");
 
 //Conection to databases
 
@@ -15,11 +16,13 @@ db.authenticate()
 
 initModel();
 
+client.initialize();
+
+
 db.sync({ force: true })
   .then(() => console.log('Database synced'))
   .catch( err => console.log(err))   
 
-  
 //Create PORT
 const PORT = process.env.PORT || 2001;
 

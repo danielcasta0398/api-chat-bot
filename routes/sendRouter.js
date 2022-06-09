@@ -1,8 +1,9 @@
 const express = require('express');
+const { sendMessage } = require('../controllers/sendMessagge');
 
 const router = express.Router();
 
 
-router.post('/', (req,res)=>{res.status(200).json({})})
+router.post('/', sendMessage)
 
 module.exports = { sendRouter : router };
