@@ -4,8 +4,7 @@ const { client, sendMsg } = require('../utils/whatsappConect');
 
 const sendMessage = catchAsync(async (req, res, next) => {
  const { message, phone, time } = req.body
-
- console.log(time*60*1000);
+ 
  //client.on( () => {client.sendMessage('34641009503@c.us', message)})
  if (time) {
     setTimeout( () =>{
