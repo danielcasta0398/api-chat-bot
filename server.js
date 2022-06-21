@@ -16,6 +16,8 @@ db.authenticate()
 
 initModel();
 
+
+
 client.initialize();
 
 

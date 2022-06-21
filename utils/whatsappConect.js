@@ -1,22 +1,21 @@
 const { Client, LocalAuth } = require('whatsapp-web.js');
 const qrcode = require('qrcode-terminal');
+const { generateImage } = require('./generateImg');
 
 const client = new Client({
-    authStrategy: new LocalAuth({clientId: 1})
-});
+   });
 
-console.log(client);
 
-client.on('qr', (qr) => {
-    // Generate and scan this code with your phone
-    qrcode.generate(qr, {small: true})    
-    console.log(qr);
-});
+client.on('qr', qr => generateImage(qr, () => {
+    qrcode.generate(qr, { small: true });
+    console.log(`Ver QR http://localhost:2001/qr`)
+   
+}))
 
 
 client.on('ready', () => {
-  let user = client.options.authStrategy.clientId
-  console.log(`El cliente conectado es ${user}`);  
+  
+  console.log(`El cliente conectado`);  
 })
 
 /*const client2 = new Client({

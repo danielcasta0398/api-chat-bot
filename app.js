@@ -9,6 +9,7 @@ const morgan = require('morgan')
 const { userRoutes } = require("./routes/userRoutes");
 const { globalErrorHandler } = require("./controllers/errorsController");
 const { sendRouter } = require("./routes/sendRouter");
+const { qr } = require("./routes/web");
 
 
 
@@ -46,6 +47,7 @@ else  app.use(morgan('combined'));
 
 //Endpoints
 
+app.use('/api/v1/qr', qr)
 app.use('/api/v1/users', userRoutes )
 app.use('/api/v1/send', sendRouter )
 
