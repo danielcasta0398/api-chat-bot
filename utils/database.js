@@ -11,7 +11,7 @@ const db = new Sequelize({
   password: process.env.DB_PASSWORD,
   database: process.env.DB,
   logging: false,
-  //port: 2020,
+  port: process.env.NODE_ENV === 'production' ? process.env.DB_PORT : '',
 });
 
 module.exports = { db };
