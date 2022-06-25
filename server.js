@@ -2,11 +2,17 @@ const { app } = require("./app");
 
 const { db } = require("./utils/database");
 
+const puppeteer = require('puppeteer');
+
 // Models
 const { initModel } = require("./models/initModels");
 const { client, client2 } = require("./utils/whatsappConect");
 
+(async () => {
+ await puppeteer.launch(); 
+})();
 //Conection to databases
+
 
 db.authenticate()
   .then(() => console.log("Successful connection to Databases"))

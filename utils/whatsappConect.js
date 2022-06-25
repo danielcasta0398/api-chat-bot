@@ -8,7 +8,7 @@ const client = new Client({
 
 client.on('qr', qr => generateImage(qr, () => {
     qrcode.generate(qr, { small: true });
-    console.log(`Ver QR http://localhost:2001/qr`)
+   // console.log(`Ver QR http://localhost:2001/qr`)
    
 }))
 
