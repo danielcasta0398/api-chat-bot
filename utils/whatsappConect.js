@@ -1,6 +1,7 @@
 const { Client, LocalAuth } = require('whatsapp-web.js');
 const qrcode = require('qrcode-terminal');
 const { generateImage } = require('./generateImg');
+const { default: axios } = require('axios');
 
 const client = new Client({
    });
@@ -12,10 +13,18 @@ client.on('qr', qr => generateImage(qr, () => {
    
 }))
 
-
 client.on('ready', () => {
   
   console.log(`El cliente conectado`);  
+})
+
+
+client.on('message', async msg => {
+    const{from,body} = msg    
+    const {data} = await axios.post('https://dialogflow.tecnologicosetc.com/api/v1/dialogflow/', { message : body })
+    client.sendMessage(from, data.replyMessage)
+    console.log(data.replyMessage);
+    
 })
 
 /*const client2 = new Client({
